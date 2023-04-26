@@ -1,0 +1,6 @@
+
+DSN: host=localhost port=5432 user=humo password=pass dbname=humo_db sslmode=disable
+
+LogLevel: debug
+
+ListenPort: 8083
