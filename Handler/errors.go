@@ -1,4 +1,4 @@
-package main
+package Handler
 
 import "fmt"
 
@@ -12,7 +12,7 @@ func (t Type) Error() string {
 	return string(t)
 }
 
-func test(e string) error {
+func JsonWrong(e string) error {
 	if e == "" {
 		return fmt.Errorf("ss %s", errJson)
 	}

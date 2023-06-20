@@ -2,7 +2,6 @@ package AccAgent
 
 import (
 	"awesomeProject2/models"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -24,6 +23,10 @@ type Paginate interface {
 	GeneratePaginationFromRequest(ctx *gin.Context) models.Pagination
 }
 
+type Error interface {
+	JsonWrong(e string) error
+}
+
 type AccAgentInterface interface {
 	AddAccount(account *models.AccountAgent) error
 	GetAccountAgent(pagination *models.Pagination) ([]models.AccountAgent, error)
@@ -38,7 +41,7 @@ func (h *AccAgent) AddAccount(ctx *gin.Context) {
 	var account models.AccountAgent
 
 	if err := ctx.ShouldBindJSON(&account); err != nil {
-		fmt.Printf("error in AddAccount- ShouldBindJSON - %v", err)
+		//fmt.Printf("error in AddAccount- ShouldBindJSON - %v", Error.JsonWrong)
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err})
 		return
 	}
